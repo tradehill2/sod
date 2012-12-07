@@ -6,7 +6,6 @@ apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl
 #/usr/bin/yum install gcc gcc-c++ kernel-devel patch make bison openssl libreadline6 libreadline6-devel curl git-core zlib1g zlib1g-devel libssl-devel libxml2-devel libxslt-devel autoconf libc6-devel -y
 
 /etc/sod/rvm_install.sh
-. /usr/local/lib/rvm >/dev/null
 rvm install $RUBY_VERSION
 rvm use $RUBY_VERSION
 
