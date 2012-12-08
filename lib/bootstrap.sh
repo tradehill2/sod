@@ -5,14 +5,14 @@ apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl
 #rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm || true
 #/usr/bin/yum install gcc gcc-c++ kernel-devel patch make bison openssl libreadline6 libreadline6-devel curl git-core zlib1g zlib1g-devel libssl-devel libxml2-devel libxslt-devel autoconf libc6-devel -y
 
-/etc/sod/rvm_install.sh
-rvm install $RUBY_VERSION
-rvm use $RUBY_VERSION
+apt-get install ruby1.9 -y
 
 gem install chef --no-rdoc --no-ri
 echo 'cookbook_path "/etc/sod/cookbooks"' > /etc/sod/solo.rb
 
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+source /root/.bashrc
 
 echo '{"recipes": ["sod::default"]}' > /etc/sod/cookbooks/sod/sod.json
 chef-solo -c /etc/sod/solo.rb -j /etc/sod/cookbooks/sod/sod.json
