@@ -30,7 +30,7 @@ module Sod
       connection.exec! "mv /etc/sod/config #{config["remote_ssh_config_location"]}/config"
       connection.exec! "chown -R root:root #{config["remote_ssh_config_location"]}"
     end
-    command =  "bash -cl '/etc/sod/bootstrap.sh'"
+    command =  "bash -cl 'RUBY=#{config[:ruby_url]} RUBY_HASH=#{config[:ruby_hash]} /etc/sod/bootstrap.sh'"
     puts command
     puts connection.exec! command
   end
