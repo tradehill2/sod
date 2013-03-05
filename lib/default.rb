@@ -17,6 +17,10 @@ execute "blow away current repo" do
   command "rm -rf #{$APP_PATH} || true"
 end
 
+execute "ensure key permissions" do
+  command "chmod 0600 /etc/sod/id_sod"
+end
+
 execute "clone repo" do
   command "cd #{config["app_dir"]} && git clone #{config["repo"]}"
   user config["user"]

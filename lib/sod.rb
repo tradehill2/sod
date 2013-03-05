@@ -23,14 +23,14 @@ module Sod
     scp.upload! File.join(File.dirname(__FILE__), "default.rb"), "/etc/sod/cookbooks/sod/recipes"
     scp.upload! File.join(File.dirname(__FILE__), "bootstrap.rb"), "/etc/sod/cookbooks/sod/recipes"
     scp.upload! File.join(File.dirname(__FILE__), "project_chef.rb"), "/etc/sod/cookbooks/sod/recipes"
-    scp.upload! File.join(".",config["key_location"]), "/etc/sod" if config["key_location"]
+    scp.upload! File.join(".",config["key_location"]), "/etc/sod/id_sod" if config["key_location"]
     scp.upload! File.join(".",config["ssh_config_location"]), "/etc/sod" if config["ssh_config_location"]
     if config["remote_ssh_config_location"]
       puts connection.exec! "mkdir -p #{config["remote_ssh_config_location"]}"
       connection.exec! "mv /etc/sod/config #{config["remote_ssh_config_location"]}/config"
       connection.exec! "chown -R root:root #{config["remote_ssh_config_location"]}"
     end
-    command =  "bash -cl 'RUBY=#{config[:ruby_url]} RUBY_HASH=#{config[:ruby_hash]} /etc/sod/bootstrap.sh'"
+    command =  "bash -cl 'RUBY=#{config["ruby_url"]} RUBY_HASH=#{config["ruby_hash"]} /etc/sod/bootstrap.sh'"
     puts command
     puts connection.exec! command
   end
