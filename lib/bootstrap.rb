@@ -18,7 +18,7 @@ gem_package "bundler" do
 end
 
 execute "Install the bundle" do
-  command "cd #{$APP_PATH} && bundle install --deployment"
+  command "cd #{$APP_PATH} && bundle install --deployment --without 'test development'"
 end
 
 
