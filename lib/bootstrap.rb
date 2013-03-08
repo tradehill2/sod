@@ -22,7 +22,7 @@ execute "Create app user" do
 end
 
 execute "Set up app user ssh" do
-  command "grep github.com ~app/.ssh/config || echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~app/.ssh/config"
+  command "grep github.com ~app/.ssh/config || echo -e 'Host github.com\n\tStrictHostKeyChecking no\n' >> ~app/.ssh/config"
 end
 
 execute "Install the bundle" do
