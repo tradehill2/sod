@@ -18,7 +18,10 @@ gem_package "bundler" do
 end
 
 execute "Install the bundle" do
-  command "cd #{$APP_PATH} && bundle install --deployment --without 'test development'"
+  command "useradd -d #{$APP_PATH} app && chown -R app #{$APP_PATH}"
 end
 
+execute "Install the bundle" do
+  command "cd #{$APP_PATH} && sudo -u app bundle install --deployment --without 'test development'"
+end
 
