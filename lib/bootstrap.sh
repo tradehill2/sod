@@ -1,7 +1,7 @@
 #! /bin/bash
 set -ex
 # RVM dependencies
-apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libc6-dev libyaml-dev -y
+apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libc6-dev libyaml-dev sudo -y
 #rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm || true
 #/usr/bin/yum install gcc gcc-c++ kernel-devel patch make bison openssl libreadline6 libreadline6-devel curl git-core zlib1g zlib1g-devel libssl-devel libxml2-devel libxslt-devel autoconf libc6-devel -y
 

@@ -17,8 +17,12 @@ gem_package "bundler" do
   action :install
 end
 
-execute "Install the bundle" do
-  command "useradd -d #{$APP_PATH} app && chown -R app #{$APP_PATH}"
+execute "Create app user" do
+  command "(id app || useradd -d #{$APP_PATH} app) && chown -R app #{$APP_PATH}"
+end
+
+execute "Set up app user ssh" do
+  command "grep github.com ~app/.ssh/config || echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~app/.ssh/config"
 end
 
 execute "Install the bundle" do
